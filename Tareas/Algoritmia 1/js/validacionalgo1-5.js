@@ -1,68 +1,106 @@
 //5
-function validar (formulario){
+//Crear una funcion que se encarga de validar la entrada de datos
 
-    var checkOk = "0123456789" + "0123456789";
-
-    var checkString = formulario.mujer.value;
-
-    var todoesValido = true;
-
-
-    /*Java Script ees un lenguaje de programación no tipado, solo maneja tres tipos de variable de dato: var - variable cambiante con
-    acceso público, let es una variable de acceso restringido, const es una constante de acceso único*/ 
-    for(var i = 0; i < checkString.length; i++){
-        var ch = checkString.charAt(i);
-        for (var j = 0; j < checkOk.length; j++){
-            if (ch == checkOk.charAt(j)){
-                break;
-            }
-
-        }
-        if (j == checkOk.length){
-            todoesValido = false;
-            break;
-        }
+function Com(event, el){//Validar nombre	
+    //Obteniendo posicion del cursor 
+    var val = el.value;//Valor de la caja de texto
+    var pos = val.slice(0, el.selectionStart).length;
+	
+    var out = '';//Salida
+    var filtro = '1234567890';
+    var v = 0;//Contador de caracteres validos
+	
+    //Filtar solo los numeros
+    for (var i=0; i<val.length; i++){
+       if (filtro.indexOf(val.charAt(i)) != -1){
+	     v++;
+	     out += val.charAt(i);		   
+	     //Agregando un espacio cada 4 caracteres
+	     if((v==4) || (v==8))
+	         out+='';
+	   }
     }
-    if (!todoesValido){
-        alert("Escriba únicamente números en el campo Número de mujeres.");
-        formulario.mujer.focus();
-        return false;
-    }
-
-    var checkOk = "0123456789" + "0123456789";
-
-    var checkString = formulario.hombre.value;
-
-    var todoesValido = true;
-
-
-    /*Java Script ees un lenguaje de programación no tipado, solo maneja tres tipos de variable de dato: var - variable cambiante con
-    acceso público, let es una variable de acceso restringido, const es una constante de acceso único*/ 
-    for(var a = 0; a < checkString.length; a++){
-        var ch = checkString.charAt(a);
-        for (var b = 0; b < checkOk.length; b++){
-            if (ch == checkOk.charAt(b)){
-                break;
-            }
-
-        }
-        if (b == checkOk.length){
-            todoesValido = false;
-            break;
-        }
-    }
-    if (!todoesValido){
-        alert("Escriba únicamente números en el campo Número de hombres.");
-        formulario.hombre.focus();
-        return false;
+    //Reemplazando el valor
+    el.value = out;
+	
+    //En caso de modificar un numero reposicionar el cursor
+    if(event.keyCode==8){//Tecla borrar precionada
+        el.selectionStart = pos;
+        el.selectionEnd = pos;
     }
 
-    var hombre = parseInt(document.getElementById("hombre").value);
-    var mujer = parseInt(document.getElementById("mujer").value);
-    var sumaAlu = hombre + mujer;
-    var porcentajeM = (mujer/sumaAlu)*100;
-    var porcentajeH = (hombre/sumaAlu)*100;
+    
 
-    alert("El porcentaje de mujeres es: " + porcentajeM+ "%.");
-    alert("El porcentaje de hombres es: " + porcentajeH+ "%.");
+
+    var teclado = (document.all)?e.keyCode : e.which;
+    
+    if(teclado == 8) return true;
+
+    var patron = /[0-9\d .]/;
+
+    var codigo =String.fromCharCode(teclado);
+
+    return patron.test(codigo);
+}
+
+function Comi(event, el){//Validar nombre	
+    //Obteniendo posicion del cursor 
+    var val = el.value;//Valor de la caja de texto
+    var pos = val.slice(0, el.selectionStart).length;
+	
+    var out = '';//Salida
+    var filtro = '1234567890';
+    var v = 0;//Contador de caracteres validos
+	
+    //Filtar solo los numeros
+    for (var i=0; i<val.length; i++){
+       if (filtro.indexOf(val.charAt(i)) != -1){
+	     v++;
+	     out += val.charAt(i);		   
+	     //Agregando un espacio cada 4 caracteres
+	     if((v==4) || (v==8))
+	         out+='';
+	   }
+    }
+    //Reemplazando el valor
+    el.value = out;
+	
+    //En caso de modificar un numero reposicionar el cursor
+    if(event.keyCode==8){//Tecla borrar precionada
+        el.selectionStart = pos;
+        el.selectionEnd = pos;
+    }
+
+    
+
+
+    var teclado = (document.all)?e.keyCode : e.which;
+    
+    if(teclado == 8) return true;
+
+    var patron = /[0-9\d .]/;
+
+    var codigo =String.fromCharCode(teclado);
+
+    return patron.test(codigo);
+}
+
+
+function interes(){
+    var valor = document.formulario.muj.value;
+    var valor1 = document.formulario.hom.value;
+    var resul = parseInt(valor);
+    var resul1 = parseInt(valor1);
+    var sumaAlu = resul + resul1;
+    var porcentajeM = (resul/sumaAlu)*100;
+    var porcentajeH = (resul1/sumaAlu)*100;
+
+    document.formulario.porM.value = porcentajeM + "%";
+    document.formulario.porH.value = porcentajeH + "%";
+
+}
+
+function eliminar(){
+    document.formulario.muj.value = "";
+    document.formulario.hom.value = "";
 }

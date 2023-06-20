@@ -1,128 +1,193 @@
-function validar (formulario){
+//1
+//Crear una funcion que se encarga de validar la entrada de datos
 
-    var checkOk = "0123456789" + "0123456789";
-
-    var checkString = formulario.com1.value;
-
-    var todoesValido = true;
-
-
-    /*Java Script ees un lenguaje de programación no tipado, solo maneja tres tipos de variable de dato: var - variable cambiante con
-    acceso público, let es una variable de acceso restringido, const es una constante de acceso único*/ 
-    for(var i = 0; i < checkString.length; i++){
-        var ch = checkString.charAt(i);
-        for (var j = 0; j < checkOk.length; j++){
-            if (ch == checkOk.charAt(j)){
-                break;
-            }
-
-        }
-        if (j == checkOk.length){
-            todoesValido = false;
-            break;
-        }
+function Com(event, el){//Validar nombre	
+    //Obteniendo posicion del cursor 
+    var val = el.value;//Valor de la caja de texto
+    var pos = val.slice(0, el.selectionStart).length;
+	
+    var out = '';//Salida
+    var filtro = '1234567890';
+    var v = 0;//Contador de caracteres validos
+	
+    //Filtar solo los numeros
+    for (var i=0; i<val.length; i++){
+       if (filtro.indexOf(val.charAt(i)) != -1){
+	     v++;
+	     out += val.charAt(i);		   
+	     //Agregando un espacio cada 4 caracteres
+	     if((v==4) || (v==8))
+	         out+='';
+	   }
     }
-    if (!todoesValido){
-        alert("Escriba únicamente números en el campo Comisión 1.");
-        formulario.com1.focus();
-        return false;
-    }
-
-    var checkOk = "0123456789" + "0123456789";
-
-    var checkString = formulario.com2.value;
-
-    var todoesValido = true;
-
-
-    /*Java Script ees un lenguaje de programación no tipado, solo maneja tres tipos de variable de dato: var - variable cambiante con
-    acceso público, let es una variable de acceso restringido, const es una constante de acceso único*/ 
-    for(var a = 0; a < checkString.length; a++){
-        var ch = checkString.charAt(a);
-        for (var b = 0; b < checkOk.length; b++){
-            if (ch == checkOk.charAt(b)){
-                break;
-            }
-
-        }
-        if (b == checkOk.length){
-            todoesValido = false;
-            break;
-        }
-    }
-    if (!todoesValido){
-        alert("Escriba únicamente números en el campo Comisión 2.");
-        formulario.com2.focus();
-        return false;
+    //Reemplazando el valor
+    el.value = out;
+	
+    //En caso de modificar un numero reposicionar el cursor
+    if(event.keyCode==8){//Tecla borrar precionada
+        el.selectionStart = pos;
+        el.selectionEnd = pos;
     }
 
-    var checkOk = "0123456789" + "0123456789";
-
-    var checkString = formulario.com3.value;
-
-    var todoesValido = true;
-
-
-    /*Java Script ees un lenguaje de programación no tipado, solo maneja tres tipos de variable de dato: var - variable cambiante con
-    acceso público, let es una variable de acceso restringido, const es una constante de acceso único*/ 
-    for(var c = 0; c < checkString.length; c++){
-        var ch = checkString.charAt(c);
-        for (var d = 0; d < checkOk.length; d++){
-            if (ch == checkOk.charAt(d)){
-                break;
-            }
-
-        }
-        if (d == checkOk.length){
-            todoesValido = false;
-            break;
-        }
-    }
-    if (!todoesValido){
-        alert("Escriba únicamente números en el campo Comisión 3.");
-        formulario.com3.focus();
-        return false;
-    }
-
-    var checkOk = "0123456789" + "0123456789";
-
-    var checkString = formulario.sueldo.value;
-
-    var todoesValido = true;
-
-
-    /*Java Script ees un lenguaje de programación no tipado, solo maneja tres tipos de variable de dato: var - variable cambiante con
-    acceso público, let es una variable de acceso restringido, const es una constante de acceso único*/ 
-    for(var e = 0; e < checkString.length; e++){
-        var ch = checkString.charAt(e);
-        for (var f = 0; f < checkOk.length; f++){
-            if (ch == checkOk.charAt(f)){
-                break;
-            }
-
-        }
-        if (f == checkOk.length){
-            todoesValido = false;
-            break;
-        }
-    }
-    if (!todoesValido){
-        alert("Escriba únicamente números en el campo Sueldo base.");
-        formulario.sueldo.focus();
-        return false;
-    }
-
-    var com1 = parseInt(document.getElementById("com1").value);
-    var com2 = parseInt(document.getElementById("com2").value);
-    var com3 = parseInt(document.getElementById("com3").value);
-    var sueldo = parseInt(document.getElementById("sueldo").value);
-    var comision1 = (com1/100)*10;
-    var comision2 = (com2/100)*10;
-    var comision3 = (com3/100)*10;
-    var totalcomisiones = comision1+comision2+comision3+com1+com2+com3;
-    var sueldototal = totalcomisiones+sueldo;
-
-    alert("El total de comisiones ganadas incluyendo el 10% extra este mes es: " + totalcomisiones + " pelucholares.");
-    alert("Su sueldo total de este mes es: " + sueldototal + " pelucholares.");
     
+
+
+    var teclado = (document.all)?e.keyCode : e.which;
+    
+    if(teclado == 8) return true;
+
+    var patron = /[0-9\d .]/;
+
+    var codigo =String.fromCharCode(teclado);
+
+    return patron.test(codigo);
+}
+
+function Comi(event, el){//Validar nombre	
+    //Obteniendo posicion del cursor 
+    var val = el.value;//Valor de la caja de texto
+    var pos = val.slice(0, el.selectionStart).length;
+	
+    var out = '';//Salida
+    var filtro = '1234567890';
+    var v = 0;//Contador de caracteres validos
+	
+    //Filtar solo los numeros
+    for (var i=0; i<val.length; i++){
+       if (filtro.indexOf(val.charAt(i)) != -1){
+	     v++;
+	     out += val.charAt(i);		   
+	     //Agregando un espacio cada 4 caracteres
+	     if((v==4) || (v==8))
+	         out+='';
+	   }
+    }
+    //Reemplazando el valor
+    el.value = out;
+	
+    //En caso de modificar un numero reposicionar el cursor
+    if(event.keyCode==8){//Tecla borrar precionada
+        el.selectionStart = pos;
+        el.selectionEnd = pos;
+    }
+
+    
+
+
+    var teclado = (document.all)?e.keyCode : e.which;
+    
+    if(teclado == 8) return true;
+
+    var patron = /[0-9\d .]/;
+
+    var codigo =String.fromCharCode(teclado);
+
+    return patron.test(codigo);
+}
+
+function Comis(event, el){//Validar nombre	
+    //Obteniendo posicion del cursor 
+    var val = el.value;//Valor de la caja de texto
+    var pos = val.slice(0, el.selectionStart).length;
+	
+    var out = '';//Salida
+    var filtro = '1234567890';
+    var v = 0;//Contador de caracteres validos
+	
+    //Filtar solo los numeros
+    for (var i=0; i<val.length; i++){
+       if (filtro.indexOf(val.charAt(i)) != -1){
+	     v++;
+	     out += val.charAt(i);		   
+	     //Agregando un espacio cada 4 caracteres
+	     if((v==4) || (v==8))
+	         out+='';
+	   }
+    }
+    //Reemplazando el valor
+    el.value = out;
+	
+    //En caso de modificar un numero reposicionar el cursor
+    if(event.keyCode==8){//Tecla borrar precionada
+        el.selectionStart = pos;
+        el.selectionEnd = pos;
+    }
+
+    
+
+
+    var teclado = (document.all)?e.keyCode : e.which;
+    
+    if(teclado == 8) return true;
+
+    var patron = /[0-9\d .]/;
+
+    var codigo =String.fromCharCode(teclado);
+
+    return patron.test(codigo);
+}
+
+function sueldo(event, el){//Validar nombre	
+    //Obteniendo posicion del cursor 
+    var val = el.value;//Valor de la caja de texto
+    var pos = val.slice(0, el.selectionStart).length;
+	
+    var out = '';//Salida
+    var filtro = '1234567890';
+    var v = 0;//Contador de caracteres validos
+	
+    //Filtar solo los numeros
+    for (var i=0; i<val.length; i++){
+       if (filtro.indexOf(val.charAt(i)) != -1){
+	     v++;
+	     out += val.charAt(i);		   
+	     //Agregando un espacio cada 4 caracteres
+	     if((v==4) || (v==8))
+	         out+='';
+	   }
+    }
+    //Reemplazando el valor
+    el.value = out;
+	
+    //En caso de modificar un numero reposicionar el cursor
+    if(event.keyCode==8){//Tecla borrar precionada
+        el.selectionStart = pos;
+        el.selectionEnd = pos;
+    }
+
+    
+
+
+    var teclado = (document.all)?e.keyCode : e.which;
+    
+    if(teclado == 8) return true;
+
+    var patron = /[0-9\d .]/;
+
+    var codigo =String.fromCharCode(teclado);
+
+    return patron.test(codigo);
+}
+
+function interes(){
+    var valor = document.formulario.com1.value;
+    var valor1 = document.formulario.com2.value;
+    var valor2 = document.formulario.com3.value;
+    var valor3 = document.formulario.sueldo.value;
+    var resul = parseInt(valor);
+    var resul1 = parseInt(valor1);
+    var resul2 = parseInt(valor2);
+    var resul3 = parseInt(valor3);
+    var comision1 = (resul/100)*10;
+    var comision2 = (resul1/100)*10;
+    var comision3 = (resul2/100)*10;
+    var totalcomisiones = comision1+comision2+comision3+resul+resul1+resul2;
+    var sueldototal = totalcomisiones+resul3;
+
+    document.formulario.sueldoI.value = "$" + sueldototal;
+}
+
+function eliminar(){
+    document.formulario.sueldoI.value = "";
+    document.formulario.cantidad.value = "";
 }

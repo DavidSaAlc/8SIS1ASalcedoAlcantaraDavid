@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 1.</title>
-    <script src="./js/validacionalgo1.js" ></script>
+    
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
 </head>
 <body>
@@ -34,19 +34,44 @@
             <form method="post" name="formulario" onsubmit="return validar(this)">
                 <br>
                 <div class="datos">
-                    <label >Inversión: </label>
-                    <br>
-                    <input type="text" name="inv" id="inv" class="input-inv" >
-                    <br>
-                    <input type="submit" name="enviar" value="Enviar datos">
-                    <br>
-                    <input type="reset" name="borrar" value="Borrar datos">
+                    <table>
+                        <tr>
+                            <td>Introduce la cantidad a invertir: </td>
+                            <td>
+                                <input type="text" name="cantidad" value="" maxlength="9" onkeyup="Card(event, this)" /> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" value="Calcular interes" name="enviar" onclick="interes()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Su saldo total con el interes al 2% mensual es de: 
+                            </td>
+                            <td>
+                                <input type="text" readonly="readonly" class="input_text" name="sueldoI" id="cantidadI">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" value="Borrar datos" name="borrar" onclick="eliminar()">
+                            </td>
+                        </tr>
+                    </table>
+                        </td>
+                    </table>
                 </div>
             </form>
         </div>
     </div>
+    <script src="./js/validacionalgo1.js" ></script>
     <footer>
         <nav><ul><li><a href="../../index.html">Regresar al inicio</a></li></ul></nav>
     </footer>
 </body>
 </html>
+

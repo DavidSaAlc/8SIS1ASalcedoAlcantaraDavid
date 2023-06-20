@@ -38,17 +38,23 @@
                 <div class="datos">
                     <label >Promedio de las tres calificaciones parciales: </label>
                     <br>
-                    <input type="text" name="prom" id="prom" class="input-prom" >
+                    <input type="text" name="parc"  value="" maxlength="2" onkeyup="Com(event, this)" /> 
                     <br>
                     <label >Calificación del examen final: </label>
                     <br>
-                    <input type="text" name="exa" id="exa" class="input-exa" >
+                    <input type="text" name="exa"   value="" maxlength="2" onkeyup="Comi(event, this)" />
                     <br>
                     <label >Calificación del trabajo final: </label>
                     <br>
-                    <input type="text" name="trabajo" id="trabajo" class="input-trabajo" >
+                    <input type="text" name="tra"   value="" maxlength="2" onkeyup="Comis(event, this)" />
                     <br>
-                    <input type="submit" name="enviar" value="Enviar datos">
+                    <br>
+                    <input type="button" value="Calcular calificación" name="enviar" onclick="interes()">
+                    <br>
+                    <br>
+                    <label>Calificación final de la materia de algoritmos: </label>
+                    <input type="text" readonly="readonly" class="input_text" name="CalifF" id="cantidadI">
+                    <br>
                     <br>
                     <input type="reset" name="borrar" value="Borrar datos">
                 </div>

@@ -35,13 +35,22 @@
                 <div class="datos">
                     <label >Número de mujeres: </label>
                     <br>
-                    <input type="text" name="mujer" id="mujer" class="input-mujer" >
+                    <input type="text" name="muj"  value="" maxlength="2" onkeyup="Com(event, this)" /> 
                     <br>
                     <label >Número de hombres: </label>
                     <br>
-                    <input type="text" name="hombre" id="hombre" class="input-hombre" >
+                    <input type="text" name="hom"   value="" maxlength="2" onkeyup="Comi(event, this)" />
                     <br>
-                    <input type="submit" name="enviar" value="Enviar datos">
+                    <br>
+                    <input type="button" value="Calcular porcentaje" name="enviar" onclick="interes()">
+                    <br>
+                    <br>
+                    <label>Porcentaje total de mujeres: </label>
+                    <input type="text" readonly="readonly" class="input_text" name="porM" id="cantidadI">
+                    <br>
+                    <label>Porcentaje total de hombres: </label>
+                    <input type="text" readonly="readonly" class="input_text" name="porH" id="cantidadII">
+                    <br>
                     <br>
                     <input type="reset" name="borrar" value="Borrar datos">
                 </div>

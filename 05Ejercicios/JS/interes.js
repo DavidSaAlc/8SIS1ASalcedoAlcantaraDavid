@@ -1,4 +1,3 @@
-//1
 //Crear una funcion que se encarga de validar la entrada de datos
 
 function Card(event, el){//Validar nombre	

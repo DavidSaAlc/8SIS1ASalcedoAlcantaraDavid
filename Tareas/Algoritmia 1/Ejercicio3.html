@@ -35,9 +35,14 @@
                 <div class="datos">
                     <label >Subtotal: </label>
                     <br>
-                    <input type="text" name="sub" id="sub" class="input-sub" >
+                    <input type="text" name="sub"  value="" maxlength="5" onkeyup="Des(event, this)" ondrag="true" />
                     <br>
-                    <input type="submit" name="enviar" value="Enviar datos">
+                    <input type="button" value="Calcular descuento" name="enviar" onclick="interes()">
+                    <br>
+                    <br>
+                    <label>Su sueldo total con el 15% de intereses: </label>
+                    <input type="text" readonly="readonly" class="input_text" name="descuentoI" id="cantidadI">
+                    <br>
                     <br>
                     <input type="reset" name="borrar" value="Borrar datos">
                 </div>

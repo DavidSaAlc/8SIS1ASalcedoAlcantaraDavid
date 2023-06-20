@@ -34,13 +34,19 @@
                 <div class="datos">
                     <label >Año de nacimiento: </label>
                     <br>
-                    <input type="text" name="edad" id="edad" class="input-edad" >
+                    <input type="text" name="ano"  value="" maxlength="4" onkeyup="Com(event, this)" /> 
                     <br>
                     <label >Año actual: </label>
                     <br>
-                    <input type="text" name="ano" id="ano" class="input-ano" >
+                    <input type="text" name="act"   value="" maxlength="4" onkeyup="Comi(event, this)" />
                     <br>
-                    <input type="submit" name="enviar" value="Enviar datos">
+                    <br>
+                    <input type="button" value="Calcular edad" name="enviar" onclick="interes()">
+                    <br>
+                    <br>
+                    <label>Su edad es: </label>
+                    <input type="text" readonly="readonly" class="input_text" name="edad" id="cantidadI">
+                    <br>
                     <br>
                     <input type="reset" name="borrar" value="Borrar datos">
                 </div>

@@ -36,21 +36,27 @@
                 <div class="datos">
                     <label >Comisión 1: </label>
                     <br>
-                    <input type="text" name="com1" id="com1" class="input-com1" >
+                    <input type="text" name="com1"  value="" maxlength="5" onkeyup="Com(event, this)" /> 
                     <br>
                     <label >Comisión 2: </label>
                     <br>
-                    <input type="text" name="com2" id="com2" class="input-com2" >
+                    <input type="text" name="com2"   value="" maxlength="5" onkeyup="Comi(event, this)" />
                     <br>
                     <label >Comisión 3: </label>
                     <br>
-                    <input type="text" name="com3" id="com3" class="input-com3" >
+                    <input type="text" name="com3"   value="" maxlength="5" onkeyup="Comis(event, this)" />
                     <br>
                     <label >Sueldo base: </label>
                     <br>
-                    <input type="text" name="sueldo" id="sueldo" class="input-sueldo" >
+                    <input type="text" name="sueldo"   value="" maxlength="6" onkeyup="Sueldo(event, this)" />
                     <br>
-                    <input type="submit" name="enviar" value="Enviar datos">
+                    <input type="button" value="Calcular interes" name="enviar" onclick="interes()">
+                    <br>
+                    <br>
+                    <label>Su sueldo total con las comisiones es de: </label>
+                    <input type="text" readonly="readonly" class="input_text" name="sueldoI" id="cantidadI">
+                    <br>
+
                     <br>
                     <input type="reset" name="borrar" value="Borrar datos">
                 </div>
